@@ -1,50 +1,50 @@
 #pragma once
+#include "../include/hge.h"
 #include "ItemsLogic.h"
 
-class TKPainter
+class TKRender
 {
 public:
     
-    ~TKPainter(void);
-    void paint(TKList& items);
-    void init(HWND hWnd);
+    ~TKRender(void);
+    void paint();
+
 private:
     HDC _hDC;
     HDC _hBufDC;
     HBITMAP _hBufBmp;
+    HGE* _hge;
 
 public:
-    static TKPainter& GetInstance()
+    static TKRender& GetInstance()
     {
-        static TKPainter theInstance;
+        static TKRender theInstance;
         return theInstance;
     }
 private:
-    TKPainter(void);
-    TKPainter(const TKPainter&);
-    TKPainter& operator= (const TKPainter);
+    TKRender(void);
+    TKRender(const TKRender&);
+    TKRender& operator= (const TKRender);
 };
 
 
-TKPainter::TKPainter(void)
+TKRender::TKRender(void)
 {
+     _hge = hgeCreate(HGE_VERSION);
 }
 
-TKPainter::~TKPainter(void)
+TKRender::~TKRender(void)
 {
+    _hge->Release();
+}
 
-}
-void TKPainter::init(HWND hWnd)
+void TKRender::paint()
 {
-    _hDC = GetDC(hWnd);
-    _hBufDC = CreateCompatibleDC(_hDC);
-    _hBufBmp = CreateCompatibleBitmap(_hDC, 800, 600);
-    SelectObject(_hBufDC, _hBufBmp);
-}
-void TKPainter::paint(TKList& items)
-{
-    RECT rt = {0, 0, 800, 600};
-    FillRect(_hBufDC, &rt, (HBRUSH)GetStockObject(WHITE_BRUSH));
+    ItemsLogic& logic = ItemsLogic::GetInstance();
+    TKList& items = logic.getItems();
+    _hge->Gfx_Clear(ARGB(255,255,255,255));
+    _hge->Gfx_BeginScene();
+
 
     
     for (int i = 0; i < 3; i++)
@@ -54,13 +54,14 @@ void TKPainter::paint(TKList& items)
         {
             if (item->getIndex() == i) //°´ÕÕ»æÖÆË³Ðò »æÖÆ
             {
-                POINT pt = item->getPos();
-                const CImage* img = item->getImg();
-                img->Draw(_hBufDC, pt.x, pt.y);
+                hgeVector pt (0.0,0.0);
+                item->SetTexture( item->getCurrentTexture() );
+                pt = item->getPos();
+                item->Render(pt.x, pt.y);
             }
             item = items.next();
         }
     }
 
-    BitBlt(_hDC, 0, 0, 800, 600, _hBufDC, 0, 0, SRCCOPY);
+    _hge->Gfx_EndScene();
 }

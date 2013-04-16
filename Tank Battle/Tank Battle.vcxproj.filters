@@ -51,6 +51,9 @@
     <ClInclude Include="src\TKPainter.hpp">
       <Filter>头文件\TKSource</Filter>
     </ClInclude>
+    <ClInclude Include="src\TKkeys.hpp">
+      <Filter>头文件\TKSource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -61,16 +64,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Tank Battle.rc">
-      <Filter>资源文件</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="Tank Battle.ico">
-      <Filter>资源文件</Filter>
-    </Image>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

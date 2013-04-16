@@ -42,9 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\Bin</OutDir>
+    <IncludePath>G:\HGE\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\HGE\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>G:\HGE\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\HGE\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -58,6 +62,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -84,6 +89,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="src\ItemsLogic.h" />
     <ClInclude Include="src\TKItem.hpp" />
+    <ClInclude Include="src\TKkeys.hpp" />
     <ClInclude Include="src\TKList.hpp" />
     <ClInclude Include="src\TKPainter.hpp" />
     <ClInclude Include="src\TKTank.hpp" />
@@ -99,11 +105,7 @@
     <ClCompile Include="Tank Battle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Tank Battle.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico" />
-    <Image Include="Tank Battle.ico" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

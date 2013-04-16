@@ -1,7 +1,14 @@
 #pragma once
+#include "../include/hgesprite.h"
 
 #include <atlstr.h>
 #include <atlimage.h>
+#include <map>
+
+using namespace std;
+typedef map<CString,HTEXTURE> TextureRecorder;
+
+
 
 enum ItemTypeEnum   //描述Item的类别
 {
@@ -12,24 +19,38 @@ enum ItemTypeEnum   //描述Item的类别
     ITEM_OBSTACLE               //阻挡前进的东西
 };
 class TKItem
+    : public hgeSprite
 {
 public:
-    TKItem(void);
+    
+    TKItem(HTEXTURE tex, float x, float y, float w, float h);
     ~TKItem(void);
-    TKItem(CString imgDir);
-    POINT getPos();
-    const CImage* getImg();
-    virtual int getItemType() = 0;
-    int getIndex();
+
+    int                             getIndex();
+    void                            addTexture(CString texName, HTEXTURE hTex);
+    HTEXTURE                        getTexture(CString texName);    
+    HTEXTURE                        getCurrentTexture();
+
+    hgeVector                       getPos() const;
+    void                            setPos(float x, float y);
+
+    virtual int                     getItemType() const = 0;
+
+
 protected:
-    POINT       _position;
-    CImage      _img;
-    int         _index; //绘制顺序 从0开始绘制
+    int                     _index;             //绘制顺序 从0开始绘制
+    TextureRecorder         _textures;
+    hgeVector               _position;
+    HTEXTURE                _hCurrentTex;
+
+    bool                            setCurrentTexture(HTEXTURE hTex);
+    bool                            setCurrentTexture(CString texName);
 };
 
 
-TKItem::TKItem(void)
+TKItem::TKItem(HTEXTURE tex, float x, float y, float w, float h):hgeSprite(tex,  x,  y,  w,  h)
 {
+
 }
 
 
@@ -37,20 +58,65 @@ TKItem::~TKItem(void)
 {
 }
 
-TKItem::TKItem(CString imgDir)
-{
-    _img.Load(imgDir);
-}
-
-POINT TKItem::getPos()
-{
-    return _position;
-}
 int TKItem::getIndex()
 {
     return _index;
 }
-const CImage* TKItem::getImg()
+void TKItem::addTexture(CString texName, HTEXTURE hTex)
 {
-    return &_img;
+    auto i = _textures.find(texName);
+    if (i != _textures.end())
+    {
+        i->second = hTex;
+    }
+    else
+    {
+        _textures.insert(TextureRecorder :: value_type(texName,hTex));
+    }
+}
+
+HTEXTURE TKItem::getTexture(CString texName)
+{
+    auto i = _textures.find(texName);
+    if (i != _textures.end())
+    {
+        return i->second;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+hgeVector TKItem::getPos() const
+{
+    return _position;
+}
+
+void TKItem::setPos(float x, float y)
+{
+    _position.x = x;
+    _position.y = y;
+}
+
+HTEXTURE TKItem::getCurrentTexture()
+{
+    return _hCurrentTex;
+}
+
+bool TKItem::setCurrentTexture(HTEXTURE hTex)
+{
+    _hCurrentTex = hTex;
+    return true;
+}
+
+bool TKItem::setCurrentTexture(CString texName)
+{
+    auto i = _textures.find(texName);
+    if (i != _textures.end())
+    {
+        _hCurrentTex = i->second;
+        return true;
+    }
+    return false;
 }

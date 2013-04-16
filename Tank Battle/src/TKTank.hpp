@@ -10,53 +10,71 @@ class TKTank
     :public TKItem
 {
 public:
-    TKTank(CString imgDir);
+    TKTank(HTEXTURE upTex, HTEXTURE downTex, HTEXTURE leftTex, HTEXTURE rightTex);
     ~TKTank();
+    
 
-    int                     getSpeed();
-    POINT                   getPos();
-    int                     getItemType();
+    int                     getSpeed() const;
+    int                     getItemType() const;
+    int                     getDir() const;
 
-    void                    setPos(POINT pt);
     void                    setSpeed(int speed);
     void                    setDir(int dir);
     void                    move();
 private:
-    static const int       SPEED_MAX = 100;
-    int                     _speed;                         //x px per 20 ms
+    static const int        SPEED_MAX = 100;
+    int                     _speed;                         //x px per 16 ms
     int                     _dir;
+    
+
 };
-
-TKTank::TKTank(CString imgDir):TKItem(imgDir)
-{
-    _speed = 1;
-    _index = 1;
-    _dir = TANK_DIR_UP;
-    POINT pt = {0,0};
-    _position = pt;
-}
-
 TKTank::~TKTank()
 {
+
+}
+TKTank::TKTank(HTEXTURE upTex, HTEXTURE downTex, HTEXTURE leftTex, HTEXTURE rightTex):TKItem(upTex, 0, 0, 60, 60)
+{
+    addTexture("TankUp", upTex);
+    addTexture("TankDown", downTex);
+    addTexture("TankLeft", leftTex);
+    addTexture("TankRight", rightTex);
+    _speed = 5;
+    _index = 1;
+    _dir = TANK_DIR_UP;
+    setCurrentTexture("TankUp");
+    setPos(0,0);
 }
 
-int TKTank::getItemType()
+
+int TKTank::getItemType() const
 {
     return ITEM_TANK;
 }
 
-POINT TKTank::getPos()
+int TKTank::getDir() const
 {
-    return _position;
+    return _dir;
 }
 
-void TKTank::setPos(POINT pt)
-{
-    _position = pt;
-}
 void TKTank::setDir(int dir)
 {
     _dir = dir;
+    if (_dir == TANK_DIR_UP)
+    {
+        setCurrentTexture("TankUp");
+    }
+    else if(_dir == TANK_DIR_DOWN)
+    {
+        setCurrentTexture("TankDown");
+    }
+    else if(_dir == TANK_DIR_LEFT)
+    {
+        setCurrentTexture("TankLeft");
+    }
+    else if(_dir == TANK_DIR_RIGHT)
+    {
+        setCurrentTexture("TankRight");
+    }
 }
 
 void TKTank::setSpeed(int speed)
