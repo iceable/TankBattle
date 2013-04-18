@@ -41,8 +41,10 @@ TKTank::TKTank(HTEXTURE upTex, HTEXTURE downTex, HTEXTURE leftTex, HTEXTURE righ
     _speed = 5;
     _index = 1;
     _dir = TANK_DIR_UP;
-    setCurrentTexture("TankUp");
     setPos(0,0);
+    //SetBlendMode(BLEND_ALPHAADD);
+    //SetColor(0x00000000);
+    setCurrentTexture("TankUp");
 }
 
 

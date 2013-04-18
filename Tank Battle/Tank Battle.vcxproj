@@ -86,22 +86,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="src\ItemsLogic.h" />
+    <ClInclude Include="src\menuitem.h" />
+    <ClInclude Include="src\TKGame.h" />
     <ClInclude Include="src\TKItem.hpp" />
     <ClInclude Include="src\TKkeys.hpp" />
     <ClInclude Include="src\TKList.hpp" />
-    <ClInclude Include="src\TKPainter.hpp" />
+    <ClInclude Include="src\TKRender.hpp" />
+    <ClInclude Include="src\TKShellMenu.hpp" />
     <ClInclude Include="src\TKTank.hpp" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Tank Battle.h" />
-    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="src\menuitem.cpp" />
     <ClCompile Include="Tank Battle.cpp" />
   </ItemGroup>
   <ItemGroup>
