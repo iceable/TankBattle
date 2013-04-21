@@ -6,6 +6,12 @@ enum TankDirectEnum
     TANK_DIR_LEFT,
     TANK_DIR_RIGHT
 };
+enum TankTeamEnum
+{
+    TEAM_ONE,
+    TEAM_TWO
+};
+
 class TKTank
     :public TKItem
 {
@@ -17,14 +23,17 @@ public:
     int                     getSpeed() const;
     int                     getItemType() const;
     int                     getDir() const;
+    int                     getTeam();
 
     void                    setSpeed(int speed);
     void                    setDir(int dir);
     void                    move();
+    void                    setTeam(int team);
 private:
     static const int        SPEED_MAX = 100;
     int                     _speed;                         //x px per 16 ms
     int                     _dir;
+    int                     _team;
     
 
 };
@@ -38,12 +47,10 @@ TKTank::TKTank(HTEXTURE upTex, HTEXTURE downTex, HTEXTURE leftTex, HTEXTURE righ
     addTexture("TankDown", downTex);
     addTexture("TankLeft", leftTex);
     addTexture("TankRight", rightTex);
-    _speed = 5;
+    _speed = 3;
     _index = 1;
     _dir = TANK_DIR_UP;
     setPos(0,0);
-    //SetBlendMode(BLEND_ALPHAADD);
-    //SetColor(0x00000000);
     setCurrentTexture("TankUp");
 }
 
@@ -107,4 +114,17 @@ void TKTank::move()
         _position.x += _speed;
     }
 
+}
+
+int TKTank::getTeam()
+{
+    return _team;
+}
+
+void TKTank::setTeam(int team)
+{
+    if (team > -1 && team < 2)
+    {
+        _team = team;
+    }
 }

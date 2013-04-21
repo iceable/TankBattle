@@ -51,6 +51,9 @@
     <ClInclude Include="src\menuitem.h">
       <Filter>头文件\hgeMenueItem</Filter>
     </ClInclude>
+    <ClInclude Include="src\TKBullet.hpp">
+      <Filter>头文件\TKSource\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tank Battle.cpp">

@@ -86,6 +86,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\TKBullet.hpp" />
     <ClInclude Include="src\menuitem.h" />
     <ClInclude Include="src\TKGame.h" />
     <ClInclude Include="src\TKItem.hpp" />
