@@ -13,14 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\TKSource">
+    <Filter Include="源文件\TKSource">
       <UniqueIdentifier>{31d82e45-2d2f-4e02-b947-4b13b4dde507}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\TKSource\Items">
+    <Filter Include="源文件\TKSource\Items">
       <UniqueIdentifier>{235ae2d9-252b-4ec3-b645-d38b838a6c0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\hgeMenueItem">
+    <Filter Include="源文件\hgeMenueItem">
       <UniqueIdentifier>{0af1a83e-8890-4e4a-8388-e450242421e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\scene">
+      <UniqueIdentifier>{8c20a2b2-943e-41ff-b81b-6377ee8c9647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\scene\MenuScene">
+      <UniqueIdentifier>{314e8aa4-8f86-46ff-95f6-89b224a5074c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,31 +34,43 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\TKItem.hpp">
-      <Filter>头文件\TKSource</Filter>
+      <Filter>源文件\TKSource</Filter>
     </ClInclude>
     <ClInclude Include="src\TKList.hpp">
-      <Filter>头文件\TKSource</Filter>
+      <Filter>源文件\TKSource</Filter>
     </ClInclude>
     <ClInclude Include="src\TKTank.hpp">
-      <Filter>头文件\TKSource\Items</Filter>
+      <Filter>源文件\TKSource\Items</Filter>
     </ClInclude>
     <ClInclude Include="src\TKkeys.hpp">
-      <Filter>头文件\TKSource</Filter>
+      <Filter>源文件\TKSource</Filter>
     </ClInclude>
     <ClInclude Include="src\TKShellMenu.hpp">
-      <Filter>头文件\TKSource</Filter>
+      <Filter>源文件\TKSource</Filter>
     </ClInclude>
     <ClInclude Include="src\TKRender.hpp">
-      <Filter>头文件\TKSource</Filter>
+      <Filter>源文件\TKSource</Filter>
     </ClInclude>
     <ClInclude Include="src\TKGame.h">
-      <Filter>头文件\TKSource</Filter>
+      <Filter>源文件\TKSource</Filter>
     </ClInclude>
     <ClInclude Include="src\menuitem.h">
-      <Filter>头文件\hgeMenueItem</Filter>
+      <Filter>源文件\hgeMenueItem</Filter>
     </ClInclude>
     <ClInclude Include="src\TKBullet.hpp">
-      <Filter>头文件\TKSource\Items</Filter>
+      <Filter>源文件\TKSource\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\MenueScene.h">
+      <Filter>源文件\scene\MenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\SceneEngine.h">
+      <Filter>源文件\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Singleton.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\Sence.h">
+      <Filter>源文件\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +78,13 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\menuitem.cpp">
-      <Filter>头文件\hgeMenueItem</Filter>
+      <Filter>源文件\hgeMenueItem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\MenueScene.cpp">
+      <Filter>源文件\scene\MenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\SceneEngine.cpp">
+      <Filter>源文件\scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

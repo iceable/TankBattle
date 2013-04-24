@@ -17,17 +17,12 @@ HGE* hge;
 
 
 
-bool FrameFunc()
+bool Update()
 {
-    ItemsLogic& game =  ItemsLogic::GetInstance();
-    for (int i = 0; i < 255; i++)
-    {
-        game.KeyProc(i, hge->Input_GetKeyState(i));
-    }
-    return game.LogicProc();
+    return false;
 }
 
-bool RenderFunc()
+bool Render()
 {
     TKRender& painter = TKRender::GetInstance();
     painter.paint();
@@ -42,8 +37,8 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
     hge->System_SetState(HGE_LOGFILE, "tank battle.log");
     hge->System_SetState(HGE_SHOWSPLASH, false); 
 
-	hge->System_SetState(HGE_FRAMEFUNC, FrameFunc ); //Âß¼­º¯Êý
-	hge->System_SetState(HGE_RENDERFUNC, RenderFunc ); //»æ»­º¯Êý
+	hge->System_SetState(HGE_FRAMEFUNC, Update ); //Âß¼­º¯Êý
+	hge->System_SetState(HGE_RENDERFUNC, Render ); //»æ»­º¯Êý
 
 	hge->System_SetState(HGE_FPS, 60 ); //Ã¿Ãë60Ö¡
     hge->System_SetState(HGE_SCREENBPP, 32);

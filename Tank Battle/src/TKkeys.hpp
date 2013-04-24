@@ -4,10 +4,7 @@ class TKkeys
 public:
     TKkeys()
     {
-        for (int i = 0; i < 255; i++)
-        {
-            _keys[i] = 0;
-        }
+        memset(_keys, 0, 255);
     }
     ~TKkeys()
     {
